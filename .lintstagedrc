@@ -1,0 +1,10 @@
+{
+  "*.{js, jsx, ts, tsx}": [
+    "eslint --max-warnings=0",
+    "git add"
+  ],
+  "src/**/*/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+    "prettier --config .prettierrc --write",
+    "git add"
+  ]
+}
