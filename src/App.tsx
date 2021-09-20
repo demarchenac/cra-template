@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.scss';
+import React from 'react';
+import { VStack, Flex, Heading } from '@chakra-ui/layout';
+import { IconButton } from '@chakra-ui/button';
+import { FaSun, FaMoon } from 'react-icons/fa';
+import { useColorMode } from '@chakra-ui/color-mode';
 
-function App() {
+interface Props {}
+const App: React.FC<Props> = () => {
+  const { colorMode, toggleColorMode } = useColorMode();
+  const isDark = colorMode === 'dark';
+  const icon = isDark ? <FaSun /> : <FaMoon />;
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <VStack p="5">
+        <Flex w="100%">
+          <Heading ml="8" size="md" fontWeight="semibold" color="black.400">
+            Hello From CRA with Chakra UI!
+          </Heading>
+        </Flex>
+        <IconButton
+          isRound
+          aria-label="theme-toggle"
+          icon={icon}
+          onClick={toggleColorMode}
+        />
+      </VStack>
     </div>
   );
-}
+};
 
 export default App;
